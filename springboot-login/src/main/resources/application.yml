@@ -1,0 +1,38 @@
+server:
+  port: 8081
+
+#数据源
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springbootdb?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 25000    #配置获取连接等待超时的时间
+    timeBetweenEvictionRunsMillis: 25000 # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    minEvictableIdleTimeMillis: 300000  # 配置一个连接在池中最小生存的时间，单位是毫秒
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+
+  freemarker:
+    cache: false    #开发环境，清除缓存
+    template-loader-path: classpath:templates/
+  devtools:
+    restart:
+      exclude: classpath:static/**
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.ttt.springboot.login.model.entity
+
+logging:
+  level:
+    com.ttt.springboot.login: debug

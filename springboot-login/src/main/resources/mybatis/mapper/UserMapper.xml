@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ttt.springboot.login.model.dao.UserDao" >
+    <resultMap id="BaseResultMap" type="com.ttt.springboot.login.model.vo.UserVO" >
+        <result column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="sex" property="sex"/>
+        <result column="email" property="email"/>
+        <result column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, user_name, password, sex, email
+    </sql>
+
+    <select id="listAllUsers" resultMap="BaseResultMap"  >
+        SELECT u.id, u.user_name, u.password,u.sex,u.email,u.role_id,r.role_name
+        FROM t_user u, t_role r
+        WHERE u.role_id=r.id
+    </select>
+
+    <select id="getUserById" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT u.id, u.user_name, u.password,u.sex,u.email,u.role_id,r.role_name
+        FROM t_user u, t_role r
+        WHERE u.role_id=r.id and u.id = #{id}
+    </select>
+
+    <select id="getUserByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT u.id, u.user_name, u.password,u.sex,u.email,u.role_id,r.role_name
+        FROM t_user u, t_role r
+        WHERE u.role_id=r.id and u.user_name = #{userName}
+    </select>
+
+    <insert id="insert" parameterType="com.ttt.springboot.login.model.entity.User" >
+        INSERT INTO
+        t_user
+        (user_name,password,sex,email,role_id)
+        VALUES
+        (#{userName}, #{password}, #{sex},#{email},#{roleId})
+    </insert>
+
+    <update id="update" parameterType="com.ttt.springboot.login.model.entity.User" >
+        UPDATE
+        t_user
+        SET
+        <if test="userName != null">user_name = #{userName},</if>
+        <if test="password != null">password = #{password},</if>
+        <if test="sex != null">sex = #{sex},</if>
+        <if test="email != null">email = #{email},</if>
+        <if test="roleId != null">role_id = #{roleId}</if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        DELETE FROM
+        t_user
+        WHERE
+        id =#{id}
+    </delete>
+</mapper>

@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+#数据源
+spring:
+  devtools:
+    restart:
+      exclude: classpath:static/**
+
+  freemarker:
+    settings:
+      auto_import:  /spring.ftl as spring
