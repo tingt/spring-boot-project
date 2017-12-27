@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+#数据源
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springbootdb?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+#mybatis配置
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.ttt.springboot.mybatis.domain
