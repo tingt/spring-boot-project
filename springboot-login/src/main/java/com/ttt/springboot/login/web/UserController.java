@@ -60,7 +60,7 @@ public class UserController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @RequestMapping(value = "/add",method = RequestMethod.GET)
+    @RequestMapping(value = "/add")
     public String addUser(Model model){
         LOGGER.info("add user. ");
         if(!model.containsAttribute("userVO")){
