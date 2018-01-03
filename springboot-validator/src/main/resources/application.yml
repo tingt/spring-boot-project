@@ -1,0 +1,8 @@
+server:
+  port: 8081
+
+#数据源
+spring:
+  devtools:
+    restart:
+      exclude: classpath:static/**
