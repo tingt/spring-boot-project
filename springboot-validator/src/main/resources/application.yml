@@ -6,3 +6,7 @@ spring:
   devtools:
     restart:
       exclude: classpath:static/**
+
+  freemarker:
+    settings:
+      auto_import:  /spring.ftl as spring
