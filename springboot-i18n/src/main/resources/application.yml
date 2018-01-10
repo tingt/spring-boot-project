@@ -1,0 +1,7 @@
+spring:
+  messages:
+    basename: i18n/messages
+
+  freemarker:
+    settings:
+      auto_import:  /spring.ftl as spring
