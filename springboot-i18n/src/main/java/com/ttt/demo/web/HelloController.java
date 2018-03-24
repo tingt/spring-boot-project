@@ -15,7 +15,7 @@ public class HelloController {
 
     @RequestMapping("/")
     public String hello() {
-        String welcome = messageSourceUtil.getMessage("hello.world");
+        String welcome = messageSourceUtil.getMessage("hello.world",new Object[]{"ttt","dsw"});
         System.out.println(welcome);
         return "hello";
     }

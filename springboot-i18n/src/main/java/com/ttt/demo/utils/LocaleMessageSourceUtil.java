@@ -15,30 +15,88 @@ public class LocaleMessageSourceUtil {
     @Resource
     private MessageSource messageSource;
 
-    public String getMessage(String code) {
-        return getMessage(code, null);
-    }
-
     /**
-     *
-     * @param code ：对应messages配置的key.
-     * @param args : 数组参数.
+     * 国际化
+     * @param code properties里的key
      * @return
      */
-    public String getMessage(String code, Object[] args){
-        return getMessage(code, args, "");
+    public String getMessage(String code){
+        return this.getMessage(code,new Object[]{});
     }
 
     /**
-     *
-     * @param code ：对应messages配置的key.
-     * @param args : 数组参数.
-     * @param defaultMessage : 没有设置key的时候的默认值.
+     * 国际化
+     * @param code properties里的key
+     * @param defaultMessage 不存在时默认输出
+     * @return
+     */
+    public String getMessage(String code,String defaultMessage){
+        return this.getMessage(code,null,defaultMessage);
+    }
+
+    /**
+     * 国际化
+     * @param code properties里的key
+     * @param defaultMessage 不存在时默认输出
+     * @param locale 环境
+     * @return
+     */
+    public String getMessage(String code,String defaultMessage,Locale locale){
+        return this.getMessage(code,null,defaultMessage,locale);
+    }
+
+    /**
+     * 国际化
+     * @param code properties里的key
+     * @param locale 环境
+     * @return
+     */
+    public String getMessage(String code,Locale locale){
+        return this.getMessage(code,null,"",locale);
+    }
+
+    /**
+     * 国际化
+     * @param code properties里的key
+     * @param args properties里value里的参数，替换其中{0} {1}...
+     * @return
+     */
+    public String getMessage(String code,Object[] args){
+        return this.getMessage(code,args,"");
+    }
+
+    /**
+     * 国际化
+     * @param code properties里的key
+     * @param args properties里value里的参数，替换其中{0} {1}...
+     * @param locale 环境
+     * @return
+     */
+    public String getMessage(String code,Object[] args,Locale locale){
+        return this.getMessage(code,args,"",locale);
+    }
+
+    /**
+     * 国际化
+     * @param code properties里的key
+     * @param args properties里value里的参数，替换其中{0} {1}...
+     * @param defaultMessage 不存在时默认输出
      * @return
      */
     public String getMessage(String code,Object[] args,String defaultMessage){
-        //这里使用比较方便的方法，不依赖request.
         Locale locale = LocaleContextHolder.getLocale();
-        return messageSource.getMessage(code, args, defaultMessage, locale);
+        return this.getMessage(code,args, defaultMessage,locale);
+    }
+
+    /**
+     * 国际化
+     * @param code properties里的key
+     * @param args properties里value里的参数，替换其中{0} {1}...
+     * @param defaultMessage 不存在时默认输出
+     * @param locale 环境
+     * @return
+     */
+    public String getMessage(String code,Object[]args,String defaultMessage,Locale locale){
+        return messageSource.getMessage(code,args, defaultMessage,locale);
     }
 }
