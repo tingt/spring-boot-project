@@ -27,4 +27,6 @@ springboot-freemarker国际化
 后台通过messageSourceUtil.getMessage显示
 具体说明可参考：http://note.youdao.com/noteshare?id=8c8b6ffc8a30036c755de9acd941c319
 
+# springboot-profile
+springboot配置文件加载，支持profile环境及国别
 

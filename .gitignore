@@ -27,3 +27,5 @@ hs_err_pid*
 # maven
 .mvn
 mvnw*
+.DS_Store
+*.iml
