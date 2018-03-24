@@ -59,16 +59,6 @@ public class LocaleMessageSourceUtil {
      * 国际化
      * @param code properties里的key
      * @param args properties里value里的参数，替换其中{0} {1}...
-     * @return
-     */
-    public String getMessage(String code,Object[] args){
-        return this.getMessage(code,args,"");
-    }
-
-    /**
-     * 国际化
-     * @param code properties里的key
-     * @param args properties里value里的参数，替换其中{0} {1}...
      * @param locale 环境
      * @return
      */
@@ -98,5 +88,15 @@ public class LocaleMessageSourceUtil {
      */
     public String getMessage(String code,Object[]args,String defaultMessage,Locale locale){
         return messageSource.getMessage(code,args, defaultMessage,locale);
+    }
+
+    /**
+     *
+     * @param code ：对应messages配置的key.
+     * @param args : 数组参数.
+     * @return
+     */
+    public String getMessage(String code, Object[] args){
+        return getMessage(code, args, "");
     }
 }
