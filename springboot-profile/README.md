@@ -7,7 +7,7 @@
 # 说明
 ## profile-other-jar
 打成正常jar包，不要打包成可执行jar包。供profile-web依赖
-resources目录下建该业务相关的配置文件，以application开头，通过部署环境区分，部署环境以-区分 ，业务以下划线_区分
+resources目录下建该业务相关的配置文件，以application开头，通过部署环境区分，部署环境以-区分
 
 建config文件，通过@Value("${other.id}")读取配置文件中的内容。
 
@@ -41,7 +41,7 @@ application.properties为主配置文件，boot加载时首先会读取该配置
 server.port=8082
 spring.profiles.active=@profileActive@
 spring.profiles.region=@profileRegion@
-spring.profiles.include=@profileActive@-@profileRegion@_db,@profileActive@-@profileRegion@_redis,@profileActive@-@profileRegion@_other
+spring.profiles.include=@profileActive@-db,@profileActive@-redis,@profileActive@-other
 ```
 spring.profiles.active为当前运行环境，通过@profileActive@获取，spring.profiles.region为当前国别，通过@profileRegion@获取。
 spring.profiles.include为启动时要包含配置文件，注意加全。
@@ -130,24 +130,22 @@ WebBootstrap.java，注意该启动类必须在根目录下，由于profile-web�
 <build>
 <resources>
     <resource>
-        <directory>src/main/resources</directory>
+        <directory>src/main/resources/config/${profileRegion}</directory>
         <filtering>true</filtering>
-        <excludes>
-            <exclude>application*.properties</exclude>
-        </excludes>
+        <includes>
+            <include>application-${profileActive}-*.properties</include>
+        </includes>
     </resource>
     <resource>
         <directory>src/main/resources</directory>
         <filtering>true</filtering>
         <includes>
             <include>application.properties</include>
-            <include>application-${profileActive}-${profileRegion}_*.properties</include>
         </includes>
     </resource>
 </resources>
 </build>
 ```
-application.properties最好放在上面。
 
 # 打包支持
 通过mvn clean package -P prod_en来指定打包的环境。 不指定-P时，默认打dev_zh相关的配置文件
