@@ -1,8 +1,9 @@
-package com.ttt.dynamic.datasource.service;
+package com.ttt.dynamic.datasource.service2;
 
 import com.ttt.dynamic.datasource.dao.entity.Product;
 import com.ttt.dynamic.datasource.dao.mapper.ProductMapper;
 import com.ttt.dynamic.datasource.db.annotation.TargetDataSource;
+import com.ttt.dynamic.datasource.service.CoreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -18,10 +20,10 @@ import java.util.List;
  * @date 2018/3/24 下午6:45
  */
 @Service
-public class ProductService extends  CoreService{
+public class ProductService extends CoreService {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
+    @Resource
     private ProductMapper productMapper;
 
     @TargetDataSource("productMasterDataSource")

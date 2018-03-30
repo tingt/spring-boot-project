@@ -24,9 +24,9 @@ public class DynamicDataSourceAspect{
     private static Logger log= LoggerFactory.getLogger(DynamicDataSourceAspect.class);
 
     /**
-     * 切面放在service方法上，所以这里要配置AOP切面的切入点
+     * 切面放在service方法上，所以这里要配置AOP切面的切入点，多个package可以用||分隔
      */
-    @Pointcut("execution( * com.ttt.dynamic.datasource.service..*.*(..))")
+    @Pointcut("execution( * com.ttt.dynamic.datasource.service.*.*(..)) || execution(* com.ttt.dynamic.datasource.service2..*.*(..))")
     public void dataSourcePointCut() {
     }
 
