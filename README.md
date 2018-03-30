@@ -30,7 +30,10 @@ springboot-freemarker国际化
 # springboot-profile
 springboot配置文件加载，支持profile环境及国别
 
-# sprinboot-dynamic-datasource
+# springboot-dynamic-datasource
 动态数据源切换
+
+# springboot-test
+测试用例：包含controller及service测试
 
 
