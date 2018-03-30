@@ -30,4 +30,7 @@ springboot-freemarker国际化
 # springboot-profile
 springboot配置文件加载，支持profile环境及国别
 
+# sprinboot-dynamic-datasource
+动态数据源切换
+
 
