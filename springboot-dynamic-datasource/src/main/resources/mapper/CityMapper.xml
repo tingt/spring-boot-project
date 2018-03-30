@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ttt.dynamic.datasource.dao.mapper.CityMapper">
+    <resultMap id="BaseResultMap" type="com.ttt.dynamic.datasource.dao.entity.City">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+    </resultMap>
+
+    <select id="listSlave" resultMap="BaseResultMap" resultType="java.util.List">
+        SELECT * FROM city
+    </select>
+
+    <select id="listMaster" resultMap="BaseResultMap" resultType="java.util.List">
+        SELECT * FROM city
+    </select>
+
+    <insert id="insert" parameterType="com.ttt.dynamic.datasource.dao.entity.City">
+        insert into city set id=#{id},name=#{name},state=#{state}
+    </insert>
+
+    <update id="update" parameterType="com.ttt.dynamic.datasource.dao.entity.City">
+        update city set name=#{name} where id=#{id}
+    </update>
+</mapper>
