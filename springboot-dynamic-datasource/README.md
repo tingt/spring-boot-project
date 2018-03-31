@@ -14,7 +14,7 @@ public class DynamicDataSourceAspect{
     /**
      * 切面放在service方法上，所以这里要配置AOP切面的切入点
      */
-    @Pointcut("execution( * com.ttt.dynamic.datasource.service..*.*(..))")
+    @Pointcut(provider)
     public void dataSourcePointCut() {
     }
 
