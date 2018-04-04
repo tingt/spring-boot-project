@@ -41,3 +41,7 @@ druid:
         min-idle: 1
         max-active: 20
         test-on-borrow: true
+mybatis:
+  type-aliases-package: com.ttt.dynamic.datasource.dao.entity
+
+
