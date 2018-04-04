@@ -7,22 +7,21 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP DATABASE IF EXISTS `ttt_ds1`;
 CREATE DATABASE `ttt_ds1`;
 USE ttt_ds1;
-DROP TABLE IF EXISTS `city`;
-CREATE TABLE `city` (
+DROP TABLE IF EXISTS `t_user`;
+CREATE TABLE `t_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `state` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='市级信息';
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
---  Records of `city`
+--  Records of `t_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `city` VALUES ('1', '石家庄', '河北'), ('2', '邯郸', '河北'), ('3', '东莞', '广东'), ('4', '广州', '广东'), ('5', '深圳', '广东');
+INSERT INTO `t_user` VALUES ('1', 'ttt'), ('2', 'dsw');
 COMMIT;
 
-DROP TABLE IF EXISTS `country`;
+DROP DATABASE IF EXISTS `country`;
 create table country (
   id int primary key auto_increment,
   countryname varchar(32),
@@ -212,60 +211,5 @@ insert into country (id, countryname, countrycode) values(180,'Yugoslavia','YU')
 insert into country (id, countryname, countrycode) values(181,'Zimbabwe','ZW');
 insert into country (id, countryname, countrycode) values(182,'Zaire','ZR');
 insert into country (id, countryname, countrycode) values(183,'Zambia','ZM');
-
-DROP DATABASE IF EXISTS `ttt_ds1_s`;
-CREATE DATABASE `ttt_ds1_s`;
-USE ttt_ds1_s;
-DROP TABLE IF EXISTS `city`;
-CREATE TABLE `city` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `state` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='市级信息';
-
--- ----------------------------
---  Records of `city`
--- ----------------------------
-BEGIN;
-INSERT INTO `city` VALUES ('1', '测试城市', '测试省');
-COMMIT;
-
-
-DROP DATABASE IF EXISTS `ttt_ds2`;
-CREATE DATABASE `ttt_ds2`;
-USE ttt_ds2;
-DROP TABLE IF EXISTS `ttt_ds2`;
-CREATE TABLE `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '流水号',
-  `name` varchar(128) DEFAULT '' COMMENT '产品名称',
-  `price` decimal(9,2) DEFAULT '0.00' COMMENT '价格',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
---  Records of `product`
--- ----------------------------
-BEGIN;
-INSERT INTO `product` VALUES ('1', '牙膏', '9.90'), ('2', '蚊香', '9.50');
-COMMIT;
-
-DROP DATABASE IF EXISTS `ttt_ds2_s`;
-CREATE DATABASE `ttt_ds2_s`;
-USE ttt_ds2_s;
-DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '流水号',
-  `name` varchar(128) DEFAULT '' COMMENT '产品名称',
-  `price` decimal(9,2) DEFAULT '0.00' COMMENT '价格',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
---  Records of `product`
--- ----------------------------
-BEGIN;
-INSERT INTO `product` VALUES ('3', '从库产品测试', '1.00');
-COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
